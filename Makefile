@@ -1,13 +1,17 @@
-all:ExecuteDatabaseCreation
+all:ExecuteDatabaseProject
 
 
-ExecuteDatabaseCreation: CompileDatabaseCreation
-	javac DatabaseCreation.java
+ExecuteDatabaseProject: CompileDatabaseProject CreateDatabase
+	javac DatabaseProject.java
 
 
-CompileDatabaseCreation: UnzipDatabase
-	java -cp ojdbc8.jar:. DatabaseCreation
+CompileDatabaseProject: UnzipDatabase 
+	java -cp ojdbc8.jar:. DatabaseProject
 
 
 UnzipDatabase:
 	unzip database.csv.zip
+
+
+CreateDatabase:
+	sqlplus admi2@cienetdb/admi @create

@@ -72,3 +72,5 @@ CREATE TABLE Fact(
 	CONSTRAINT fact_murderer_fk FOREIGN KEY (idMurderer) REFERENCES DimPerson(idPerson),
 	CONSTRAINT fact_pk PRIMARY KEY (agencyCode,month,year,city,idVictim,idMurderer)
 );
+
+quit;
