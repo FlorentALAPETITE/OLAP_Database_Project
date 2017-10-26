@@ -4,7 +4,9 @@ import java.sql.SQLException;
 
 public class DatabaseLink{
 
-    public static void main (String [] args){
+    private Connection connection;
+
+    public DatabaseLink() throws Exception{
         System.out.println("-------- Oracle JDBC Connection Testing ------");
         
                 try {
@@ -13,7 +15,7 @@ public class DatabaseLink{
         
                 } catch (ClassNotFoundException e) {
         
-                    System.out.println("Where is your Oracle JDBC Driver?");
+                    System.out.println("Driver not found");
                     e.printStackTrace();
                     return;
         
@@ -21,12 +23,11 @@ public class DatabaseLink{
         
                 System.out.println("Oracle JDBC Driver Registered!");
         
-                Connection connection = null;
-        
+                    
                 try {
         
                     connection = DriverManager.getConnection(
-                            "jdbc:oracle:thin:@localhost:1521:xe", "system", "password");
+                            "jdbc:oracle:thin:@oracle.ensinfo.sciences.univ-nantes.prive:1521:cienetdb", "admi2", "admi");
         
                 } catch (SQLException e) {
         
@@ -39,8 +40,12 @@ public class DatabaseLink{
                 if (connection != null) {
                     System.out.println("You made it, take control your database now!");
                 } else {
-                    System.out.println("Failed to make connection!");
+                    throw new Exception("Failed to make connection!");
                 }
-            }
+        }
 
+
+        public void readFromCSV(String filename){
+
+        }
 }
