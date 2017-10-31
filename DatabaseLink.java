@@ -1,10 +1,17 @@
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class DatabaseLink{
 
     private Connection connection;
+    private PreparedStatement statement;
 
     public DatabaseLink() throws Exception{
         System.out.println("-------- Oracle JDBC Connection Testing ------");
@@ -46,6 +53,127 @@ public class DatabaseLink{
 
 
         public void readFromCSV(String filename){
+            BufferedReader br = null;
+            String line = "";
+            String csvSeparator = ",";
+
+            try {
+
+                br = new BufferedReader(new FileReader(filename));
+                line = br.readLine();  // ligne description csv
+
+                int compteurCommit = 0;
+
+                while ((line = br.readLine()) != null) {
+                    ++compteurCommit;
+                    String[] data = line.split(csvSeparator);
+                    makeInsertStatement(data);
+
+                    
+                }
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+        }
+
+        private void makeInsertStatement(String [] data){   
+            String sqlStatement;
+
+            // PreparedStatement : insert DimAgency
+            try{
+
+                sqlStatement = "INSERT into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setInt(1,Integer.parseInt(data[1]));
+                statement.setString(2,data[2]);
+                statement.setString(3,data[3]);
+
+                statement.executeUpdate();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+
+            // PreparedStatement : insert DimPlace
+            try{
+
+                sqlStatement = "INSERT into DimPlace (city, state) VALUES (?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setString(1,data[4]);
+                statement.setString(2,data[5]);    
+
+                statement.executeUpdate();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+            // PreparedStatement : insert DimDate
+            try{
+                sqlStatement = "INSERT into DimDate (month, year) VALUES (?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setString(1,data[7]);
+                statement.setInt(2,Integer.parseInt(data[6]));    
+
+                statement.executeUpdate();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+
+            // PreparedStatement : insert Fact
+            try{
+                sqlStatement = "INSERT into Fact (agencyCode, month, year, city, state, idVictim, idMurderer, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, murdererCount, incident) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setInt(1,Integer.parseInt(data[1]));
+                statement.setString(2,data[7]); 
+                statement.setInt(3,Integer.parseInt(data[6]));
+                statement.setString(4,data[4]); 
+                statement.setString(5,data[5]); 
+                //statement.setString(6,(data[7]));  
+                //statement.setString(7,(data[7])); 
+                statement.setString(8,data[9]); 
+                statement.setString(9,data[10]); 
+                statement.setString(10,data[19]); 
+                statement.setString(11,data[20]);
+                statement.setString(12,data[23]); 
+                statement.setString(13,data[21]); 
+                statement.setString(14,data[22]);
+                statement.setString(12,data[23]); 
+                statement.setString(13,data[8]);   
+
+
+                statement.executeUpdate();
+
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+
 
         }
 }

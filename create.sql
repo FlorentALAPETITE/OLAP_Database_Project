@@ -13,7 +13,7 @@ CREATE TABLE DimPlace(
 );
 
 CREATE TABLE DimAgency(
-	agencyCode VARCHAR2(7) not null,
+	agencyCode NUMBER not null,
 	agencyName VARCHAR2(30) not null,
 	agencyType VARCHAR2(30) not null,
 	CONSTRAINT dimAgency_pk PRIMARY KEY (agencyCode)
@@ -50,7 +50,7 @@ END;
 /
 
 CREATE TABLE Fact(
-	agencyCode VARCHAR2(7) not null,
+	agencyCode NUMBER not null,
 	month VARCHAR2(20) not null,
 	year NUMBER not null,
 	city VARCHAR2(30) not null,
