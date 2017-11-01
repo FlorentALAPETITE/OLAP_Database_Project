@@ -61,11 +61,8 @@ public class DatabaseLink{
 
                 br = new BufferedReader(new FileReader(filename));
                 line = br.readLine();  // ligne description csv
-
-                int compteurCommit = 0;
-
-                while ((line = br.readLine()) != null) {
-                    ++compteurCommit;
+                
+                while ((line = br.readLine()) != null) {                  
                     String[] data = line.split(csvSeparator);
                     makeInsertStatement(data);
 
@@ -142,28 +139,68 @@ public class DatabaseLink{
             }
 
 
-            // PreparedStatement : insert Fact
+            // PreparedStatement : insert DimProfile victim
             try{
-                sqlStatement = "INSERT into Fact (agencyCode, month, year, city, state, idVictim, idMurderer, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, murdererCount, incident) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                sqlStatement = "INSERT into DimProfile (sex, age, year, ethnicity) VALUES (?,?,?,?)";
 
                 statement = connection.prepareStatement(sqlStatement);
 
-                statement.setInt(1,Integer.parseInt(data[1]));
-                statement.setString(2,data[7]); 
-                statement.setInt(3,Integer.parseInt(data[6]));
-                statement.setString(4,data[4]); 
-                statement.setString(5,data[5]); 
-                //statement.setString(6,(data[7]));  
-                //statement.setString(7,(data[7])); 
-                statement.setString(8,data[9]); 
-                statement.setString(9,data[10]); 
-                statement.setString(10,data[19]); 
-                statement.setString(11,data[20]);
-                statement.setString(12,data[23]); 
-                statement.setString(13,data[21]); 
-                statement.setString(14,data[22]);
-                statement.setString(12,data[23]); 
-                statement.setString(13,data[8]);   
+                statement.setString(15,data[11]); // victimSex
+                statement.setInt(16,data[12]); // victimAge
+                statement.setString(17,data[13]); // victimRace
+                statement.setString(18,data[14]); // victimEthnicity 
+
+                statement.executeUpdate();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+            // PreparedStatement : insert DimProfile perpetrator
+            try{
+                sqlStatement = "INSERT into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setString(19,data[15]); // perpetratorSex
+                statement.setInt(20,data[16]); // perpetratorAge
+                statement.setString(21,data[17]); // perpetratorRace
+                statement.setString(22,data[18]); // perpetratorEthnicity
+
+                statement.executeUpdate();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
+            // PreparedStatement : insert Fact
+            try{
+                sqlStatement = "INSERT into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                statement.setInt(1,Integer.parseInt(data[0])); // idCrime
+                statement.setInt(2,Integer.parseInt(data[1])); // agencyCode
+                statement.setString(3,data[7]);  // month
+                statement.setInt(4,Integer.parseInt(data[6])); // year
+                statement.setString(5,data[4]);  // city
+                statement.setString(6,data[5]);  // state
+                statement.setString(7,data[9]);  // crimeType
+                statement.setString(8,data[10]);  // crimeSolved
+                statement.setString(9,data[19]);  // relationship
+                statement.setString(10,data[20]);  // weapon
+                statement.setString(11,data[23]); // recordSource
+                statement.setInt(12,Integer.parseInt(data[21])); // victimCount
+                statement.setInt(13,Integer.parseInt(data[22])); // perpetratorCount
+                statement.setString(14,data[8]);   // incident
+                statement.setString(15,data[11]); // victimSex
+                statement.setInt(16,data[12]); // victimAge
+                statement.setString(17,data[13]); // victimRace
+                statement.setString(18,data[14]); // victimEthnicity
+                statement.setString(19,data[15]); // perpetratorSex
+                statement.setInt(20,data[16]); // perpetratorAge
+                statement.setString(21,data[17]); // perpetratorRace
+                statement.setString(22,data[18]); // perpetratorEthnicity
 
 
                 statement.executeUpdate();
