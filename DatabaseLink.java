@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 
 public class DatabaseLink{
@@ -56,15 +57,18 @@ public class DatabaseLink{
             BufferedReader br = null;
             String line = "";
             String csvSeparator = ",";
+            int number=1;
 
-            try {
-
+            try {                
                 br = new BufferedReader(new FileReader(filename));
                 line = br.readLine();  // ligne description csv
                 
-                while ((line = br.readLine()) != null) {                  
+                while ((line = br.readLine()) != null) { 
+                    number++;                 
                     String[] data = line.split(csvSeparator);
                     makeInsertStatement(data);
+                    if(number%10000==0)
+                        System.out.println(number);
 
                     
                 }
@@ -86,6 +90,15 @@ public class DatabaseLink{
 
         }
 
+        public void closeConnection(){
+            try{
+                connection.close();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+
         private void makeInsertStatement(String [] data){   
             String sqlStatement;
 
@@ -96,14 +109,25 @@ public class DatabaseLink{
 
                 statement = connection.prepareStatement(sqlStatement);
 
-                statement.setInt(1,Integer.parseInt(data[1]));
+                statement.setString(1,data[1]);
                 statement.setString(2,data[2]);
                 statement.setString(3,data[3]);
 
-                statement.executeUpdate();
+                statement.executeUpdate();                
+            }
+            catch(SQLIntegrityConstraintViolationException vc){
+                
             }
             catch(SQLException e){
                 e.printStackTrace();
+            }
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
             }
 
 
@@ -117,10 +141,21 @@ public class DatabaseLink{
                 statement.setString(1,data[4]);
                 statement.setString(2,data[5]);    
 
-                statement.executeUpdate();
+                statement.executeUpdate();              
+            }
+            catch(SQLIntegrityConstraintViolationException vc){
+                   
             }
             catch(SQLException e){
                 e.printStackTrace();
+            }
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
             }
 
             // PreparedStatement : insert DimDate
@@ -132,28 +167,50 @@ public class DatabaseLink{
                 statement.setString(1,data[7]);
                 statement.setInt(2,Integer.parseInt(data[6]));    
 
-                statement.executeUpdate();
+                statement.executeUpdate();               
+            }
+            catch(SQLIntegrityConstraintViolationException vc){
+                
             }
             catch(SQLException e){
                 e.printStackTrace();
+            
             }
-
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
 
             // PreparedStatement : insert DimProfile victim
             try{
-                sqlStatement = "INSERT into DimProfile (sex, age, year, ethnicity) VALUES (?,?,?,?)";
+                sqlStatement = "INSERT into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
 
                 statement = connection.prepareStatement(sqlStatement);
 
-                statement.setString(15,data[11]); // victimSex
-                statement.setInt(16,data[12]); // victimAge
-                statement.setString(17,data[13]); // victimRace
-                statement.setString(18,data[14]); // victimEthnicity 
+                statement.setString(1,data[11]); // victimSex
+                statement.setInt(2,Integer.parseInt(data[12])); // victimAge
+                statement.setString(3,data[13]); // victimRace
+                statement.setString(4,data[14]); // victimEthnicity 
 
-                statement.executeUpdate();
+                statement.executeUpdate();           
+            }
+            catch(SQLIntegrityConstraintViolationException vc){
+                
             }
             catch(SQLException e){
                 e.printStackTrace();
+            }
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
             }
 
             // PreparedStatement : insert DimProfile perpetrator
@@ -162,25 +219,36 @@ public class DatabaseLink{
 
                 statement = connection.prepareStatement(sqlStatement);
 
-                statement.setString(19,data[15]); // perpetratorSex
-                statement.setInt(20,data[16]); // perpetratorAge
-                statement.setString(21,data[17]); // perpetratorRace
-                statement.setString(22,data[18]); // perpetratorEthnicity
+                statement.setString(1,data[15]); // perpetratorSex
+                statement.setInt(2,Integer.parseInt(data[16])); // perpetratorAge
+                statement.setString(3,data[17]); // perpetratorRace
+                statement.setString(4,data[18]); // perpetratorEthnicity
 
-                statement.executeUpdate();
+                statement.executeUpdate();               
+            }
+            catch(SQLIntegrityConstraintViolationException vc){
+                
             }
             catch(SQLException e){
                 e.printStackTrace();
             }
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
 
             // PreparedStatement : insert Fact
             try{
-                sqlStatement = "INSERT into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                sqlStatement = "INSERT into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 statement = connection.prepareStatement(sqlStatement);
 
                 statement.setInt(1,Integer.parseInt(data[0])); // idCrime
-                statement.setInt(2,Integer.parseInt(data[1])); // agencyCode
+                statement.setString(2,data[1]); // agencyCode
                 statement.setString(3,data[7]);  // month
                 statement.setInt(4,Integer.parseInt(data[6])); // year
                 statement.setString(5,data[4]);  // city
@@ -194,22 +262,29 @@ public class DatabaseLink{
                 statement.setInt(13,Integer.parseInt(data[22])); // perpetratorCount
                 statement.setString(14,data[8]);   // incident
                 statement.setString(15,data[11]); // victimSex
-                statement.setInt(16,data[12]); // victimAge
+                statement.setInt(16,Integer.parseInt(data[12])); // victimAge
                 statement.setString(17,data[13]); // victimRace
                 statement.setString(18,data[14]); // victimEthnicity
                 statement.setString(19,data[15]); // perpetratorSex
-                statement.setInt(20,data[16]); // perpetratorAge
+                statement.setInt(20,Integer.parseInt(data[16])); // perpetratorAge
                 statement.setString(21,data[17]); // perpetratorRace
                 statement.setString(22,data[18]); // perpetratorEthnicity
 
 
-                statement.executeUpdate();
+                statement.executeUpdate();                
 
             }
             catch(SQLException e){
                 e.printStackTrace();
             }
-
+            finally{
+                try{
+                    statement.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
 
 
         }

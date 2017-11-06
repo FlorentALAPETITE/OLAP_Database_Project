@@ -1,11 +1,11 @@
 all:ExecuteDatabaseProject
 
 
-ExecuteDatabaseProject: CompileDatabaseProject CreateDatabase
+CompileDatabaseProject: CreateDatabase UnzipDatabase 
 	javac DatabaseProject.java
 
 
-CompileDatabaseProject: UnzipDatabase 
+ExecuteDatabaseProject: CompileDatabaseProject  
 	java -cp ojdbc8.jar:. DatabaseProject
 
 
