@@ -57,27 +57,127 @@ public class DatabaseLink{
             BufferedReader br = null;
             String line = "";
             String csvSeparator = ",";
-            int number=1;
+            int number;
+            String sqlStatement;
 
-            try {                
+
+            try {      
+                //1   
+
+                sqlStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                number=1;
                 br = new BufferedReader(new FileReader(filename));
                 line = br.readLine();  // ligne description csv
                 
                 while ((line = br.readLine()) != null) { 
                     number++;                 
                     String[] data = line.split(csvSeparator);
-                    makeInsertStatement(data);
+                    makeDimAgencyInsertStatement(data);
+                    if(number%10000==0)
+                        System.out.println(number);
+
+                }
+                statement.executeBatch();
+                statement.close();
+
+                //2
+
+                sqlStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimPlace,dimplace_pk) */ into DimPlace (city, state) VALUES (?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+                number=1;
+                br = new BufferedReader(new FileReader(filename));
+                line = br.readLine();  // ligne description csv
+                
+                while ((line = br.readLine()) != null) { 
+                    number++;                 
+                    String[] data = line.split(csvSeparator);
+                    makeDimPlaceInsertStatement(data);
                     if(number%10000==0)
                         System.out.println(number);
 
                     
                 }
+                statement.executeBatch();
+                statement.close();
+
+                //3
+                sqlStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimDate,dimDate_pk) */ into DimDate (month, year) VALUES (?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                number=1;
+                br = new BufferedReader(new FileReader(filename));
+                line = br.readLine();  // ligne description csv
+                
+                while ((line = br.readLine()) != null) { 
+                    number++;                 
+                    String[] data = line.split(csvSeparator);
+                    makeDimDateInsertStatement(data);
+                    if(number%10000==0)
+                        System.out.println(number);
+
+                    
+                }
+                statement.executeBatch();
+                statement.close();
+
+                //4
+                sqlStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                number=1;
+                br = new BufferedReader(new FileReader(filename));
+                line = br.readLine();  // ligne description csv
+                
+                while ((line = br.readLine()) != null) { 
+                    number++;                 
+                    String[] data = line.split(csvSeparator);
+                    makeDimProfileInsertStatement(data);
+                    if(number%10000==0)
+                        System.out.println(number);
+
+                    
+                }
+                statement.executeBatch();
+                statement.close();
+
+                //5
+                sqlStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(Fact,fact_pk) */ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                statement = connection.prepareStatement(sqlStatement);
+
+                number=1;
+                br = new BufferedReader(new FileReader(filename));
+                line = br.readLine();  // ligne description csv
+                
+                while ((line = br.readLine()) != null) { 
+                    number++;                 
+                    String[] data = line.split(csvSeparator);
+                    makeFactInsertStatement(data);
+                    if(number%10000==0)
+                        System.out.println(number);
+
+                    
+                }
+                statement.executeBatch();
+                statement.close();
+
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+            finally {
                 if (br != null) {
                     try {
                         br.close();
@@ -99,21 +199,18 @@ public class DatabaseLink{
             }
         }
 
-        private void makeInsertStatement(String [] data){   
-            String sqlStatement;
-
+        private void makeDimAgencyInsertStatement(String [] data){   
+            
             // PreparedStatement : insert DimAgency
             try{
 
-                sqlStatement = "INSERT into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
+                
 
                 statement.setString(1,data[1]);
                 statement.setString(2,data[2]);
                 statement.setString(3,data[3]);
-
-                statement.executeUpdate();                
+                statement.addBatch();
+                             
             }
             catch(SQLIntegrityConstraintViolationException vc){
                 
@@ -121,27 +218,28 @@ public class DatabaseLink{
             catch(SQLException e){
                 e.printStackTrace();
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
+        }
 
 
+        private void makeDimPlaceInsertStatement(String [] data){   
+          
             // PreparedStatement : insert DimPlace
             try{
 
-                sqlStatement = "INSERT into DimPlace (city, state) VALUES (?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
+            
 
                 statement.setString(1,data[4]);
                 statement.setString(2,data[5]);    
 
-                statement.executeUpdate();              
+                statement.addBatch();              
             }
             catch(SQLIntegrityConstraintViolationException vc){
                    
@@ -149,25 +247,26 @@ public class DatabaseLink{
             catch(SQLException e){
                 e.printStackTrace();
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
+        }
+
+        private void makeDimDateInsertStatement(String [] data){   
+             String sqlStatement;
 
             // PreparedStatement : insert DimDate
             try{
-                sqlStatement = "INSERT into DimDate (month, year) VALUES (?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
-
+               
                 statement.setString(1,data[7]);
                 statement.setInt(2,Integer.parseInt(data[6]));    
 
-                statement.executeUpdate();               
+                statement.addBatch();               
             }
             catch(SQLIntegrityConstraintViolationException vc){
                 
@@ -176,27 +275,28 @@ public class DatabaseLink{
                 e.printStackTrace();
             
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
+        }
+
+        private void makeDimProfileInsertStatement(String [] data){   
+             String sqlStatement;
 
             // PreparedStatement : insert DimProfile victim
             try{
-                sqlStatement = "INSERT into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
-
+               
                 statement.setString(1,data[11]); // victimSex
                 statement.setInt(2,Integer.parseInt(data[12])); // victimAge
                 statement.setString(3,data[13]); // victimRace
                 statement.setString(4,data[14]); // victimEthnicity 
 
-                statement.executeUpdate();           
+                statement.addBatch();           
             }
             catch(SQLIntegrityConstraintViolationException vc){
                 
@@ -204,27 +304,25 @@ public class DatabaseLink{
             catch(SQLException e){
                 e.printStackTrace();
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
 
             // PreparedStatement : insert DimProfile perpetrator
             try{
-                sqlStatement = "INSERT into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
+               
 
                 statement.setString(1,data[15]); // perpetratorSex
                 statement.setInt(2,Integer.parseInt(data[16])); // perpetratorAge
                 statement.setString(3,data[17]); // perpetratorRace
                 statement.setString(4,data[18]); // perpetratorEthnicity
 
-                statement.executeUpdate();               
+                statement.addBatch();               
             }
             catch(SQLIntegrityConstraintViolationException vc){
                 
@@ -232,21 +330,21 @@ public class DatabaseLink{
             catch(SQLException e){
                 e.printStackTrace();
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
+        }
 
+        private void makeFactInsertStatement(String [] data){   
+             String sqlStatement;
             // PreparedStatement : insert Fact
             try{
-                sqlStatement = "INSERT into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-                statement = connection.prepareStatement(sqlStatement);
-
+                
                 statement.setInt(1,Integer.parseInt(data[0])); // idCrime
                 statement.setString(2,data[1]); // agencyCode
                 statement.setString(3,data[7]);  // month
@@ -271,20 +369,20 @@ public class DatabaseLink{
                 statement.setString(22,data[18]); // perpetratorEthnicity
 
 
-                statement.executeUpdate();                
+                statement.addBatch();                
 
             }
             catch(SQLException e){
                 e.printStackTrace();
             }
-            finally{
-                try{
-                    statement.close();
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            // finally{
+            //     try{
+            //         statement.close();
+            //     }
+            //     catch(SQLException e){
+            //         e.printStackTrace();
+            //     }
+            // }
 
 
         }
