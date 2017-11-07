@@ -1,16 +1,17 @@
+set linesize 150;
 
--- On verra ROLLUP
+-- ROLLUP sur les incident des villes, états, mois, années 
 
-SELECT  city, state, month, year, victimCount
+SELECT city,state,month,year, count(*)
 FROM Fact NATURAL JOIN DimDate NATURAL JOIN DimPlace
-GROUP BY ROLLUP(city,state,month,year); 
+GROUP BY ROLLUP(year,month,state,city); 
 
--- TOP 10 des villes avec le plus de meutres sur toute la période de temps
 
-SELECT SUM(victimCount), city, year
-FROM Fact NATURAL JOIN DimDate NATURAL JOIN DimPlace
-WHERE ROWNUM<=10
-ORDER BY sum(victimCount) DESC
-GROUP BY year, city;
+-- TOP 5 des villes avec le plus de meutres sur toute la période de temps
+SELECT * FROM (
+	SELECT SUM(victimCount), city, state, year
+	FROM Fact NATURAL JOIN DimDate NATURAL JOIN DimPlace	
+	GROUP BY year, city, state
+	ORDER BY sum(victimCount) DESC)
+WHERE ROWNUM<=5;
 
--- 
