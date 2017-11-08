@@ -1,3 +1,4 @@
+Record ID,Agency Code,Agency Name,Agency Type,City,State,Year,Month,Incident,Crime Type,Crime Solved,Victim Sex,Victim Age,Victim Race,Victim Ethnicity,Perpetrator Sex,Perpetrator Age,Perpetrator Race,Perpetrator Ethnicity,Relationship,Weapon,Victim Count,Perpetrator Count,Record Source
 595816,AK00101,Anchorage,Municipal Police,Anchorage,Alaska,2013,May,1,Murder or Manslaughter,Yes,Female,73,Asian/Pacific Islander,Unknown,Male,24,Native American/Alaska Native,Unknown,Stranger,Unknown,1,0,FBI
 595817,AK00101,Anchorage,Municipal Police,Anchorage,Alaska,2013,January,1,Murder or Manslaughter,Yes,Male,21,White,Unknown,Male,22,White,Unknown,Neighbor,Blunt Object,0,0,FBI
 595818,AK00101,Anchorage,Municipal Police,Anchorage,Alaska,2013,January,2,Murder or Manslaughter,No,Male,38,Native American/Alaska Native,Unknown,Unknown,0,Unknown,Unknown,Unknown,Knife,0,0,FBI
@@ -466,3 +467,168 @@
 596281,AZ00801,Kingman,Municipal Police,Mohave,Arizona,2013,December,1,Murder or Manslaughter,Yes,Male,53,White,Unknown,Male,51,White,Not Hispanic,Friend,Unknown,0,0,FBI
 596282,AZ00804,Lake Havasu City,Municipal Police,Mohave,Arizona,2013,July,1,Manslaughter by Negligence,Yes,Female,57,White,Not Hispanic,Female,21,White,Not Hispanic,Stranger,Unknown,0,0,FBI
 596283,AZ00804,Lake Havasu City,Municipal Police,Mohave,Arizona,2013,October,1,Murder or Manslaughter,Yes,Male,23,White,Not Hispanic,Male,25,White,Not Hispanic,Friend,Knife,0,0,FBI
+602246,MA01303,Chelsea,Municipal Police,Suffolk,Massachusetts,2013,May,1,Murder or Manslaughter,No,Male,52,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Firearm,1,0,FBI
+602247,MA01303,Chelsea,Municipal Police,Suffolk,Massachusetts,2013,July,1,Murder or Manslaughter,No,Female,88,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Blunt Object,0,0,FBI
+602248,MA01303,Chelsea,Municipal Police,Suffolk,Massachusetts,2013,December,1,Murder or Manslaughter,No,Female,45,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Knife,0,0,FBI
+602249,MA013BA,MBTA: Suffolk County,Special Police,Suffolk,Massachusetts,2013,December,1,Murder or Manslaughter,Yes,Male,26,Black,Unknown,Male,22,Black,Unknown,Unknown,Firearm,0,1,FBI
+602250,MA01415,Fitchburg,Municipal Police,Worcester,Massachusetts,2013,June,1,Murder or Manslaughter,Yes,Male,26,White,Unknown,Male,27,Black,Unknown,Acquaintance,Handgun,0,1,FBI
+602251,MA01415,Fitchburg,Municipal Police,Worcester,Massachusetts,2013,August,1,Murder or Manslaughter,No,Male,33,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Firearm,0,0,FBI
+602252,MA01425,Leominster,Municipal Police,Worcester,Massachusetts,2013,August,1,Murder or Manslaughter,Yes,Male,33,White,Unknown,Male,33,White,Unknown,Stranger,Unknown,0,1,FBI
+602253,MA01442,Rutland,Municipal Police,Worcester,Massachusetts,2013,December,1,Murder or Manslaughter,Yes,Female,53,White,Unknown,Male,35,White,Unknown,Acquaintance,Blunt Object,0,0,FBI
+602254,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,February,1,Murder or Manslaughter,Yes,Male,20,White,Unknown,Male,21,White,Unknown,Acquaintance,Knife,0,1,FBI
+602255,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,March,1,Murder or Manslaughter,Yes,Male,99,White,Unknown,Female,27,White,Unknown,Son,Unknown,0,0,FBI
+602256,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,April,1,Murder or Manslaughter,Yes,Female,37,White,Unknown,Male,50,Black,Unknown,Girlfriend,Handgun,0,0,FBI
+602257,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,June,1,Murder or Manslaughter,Yes,Female,47,White,Unknown,Male,42,White,Unknown,Girlfriend,Firearm,0,0,FBI
+602258,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,June,2,Murder or Manslaughter,Yes,Male,48,Black,Unknown,Male,38,White,Unknown,Acquaintance,Blunt Object,0,0,FBI
+602259,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,July,1,Murder or Manslaughter,Yes,Female,71,White,Unknown,Male,70,White,Unknown,Wife,Firearm,0,0,FBI
+602260,MA01460,Worcester,Municipal Police,Worcester,Massachusetts,2013,July,2,Murder or Manslaughter,No,Male,28,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604191,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,January,2,Murder or Manslaughter,No,Male,33,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604192,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,January,3,Murder or Manslaughter,No,Male,36,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604193,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,19,Black,Unknown,Male,18,Black,Unknown,Unknown,Handgun,0,2,FBI
+604194,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,February,2,Murder or Manslaughter,No,Male,50,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604195,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,February,3,Murder or Manslaughter,Yes,Male,19,White,Unknown,Male,0,Black,Unknown,Unknown,Gun,0,0,FBI
+604196,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,April,1,Murder or Manslaughter,No,Male,20,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604197,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,April,2,Murder or Manslaughter,Yes,Male,28,White,Unknown,Male,0,Black,Unknown,Unknown,Handgun,0,3,FBI
+604198,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,April,3,Murder or Manslaughter,No,Male,25,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604199,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,May,1,Murder or Manslaughter,No,Male,22,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604200,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,38,Black,Unknown,Male,41,Black,Unknown,Acquaintance,Shotgun,0,0,FBI
+604201,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,June,2,Murder or Manslaughter,No,Male,99,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604202,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,42,Black,Unknown,Male,0,Black,Unknown,Unknown,Handgun,0,0,FBI
+604203,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,July,2,Murder or Manslaughter,Yes,Male,16,Black,Unknown,Male,23,Black,Unknown,Unknown,Handgun,0,0,FBI
+604204,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Male,31,Black,Unknown,Male,35,Black,Unknown,Acquaintance,Handgun,0,0,FBI
+604205,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,August,2,Murder or Manslaughter,No,Male,25,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,3,FBI
+604206,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,August,3,Murder or Manslaughter,Yes,Male,49,Black,Unknown,Male,52,Black,Unknown,Unknown,Knife,0,0,FBI
+604207,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,August,4,Murder or Manslaughter,Yes,Male,37,Black,Unknown,Male,0,Black,Unknown,Unknown,Gun,0,0,FBI
+604208,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,September,1,Murder or Manslaughter,No,Female,39,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Blunt Object,0,0,FBI
+604209,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,September,2,Murder or Manslaughter,Yes,Male,48,White,Unknown,Male,29,Black,Unknown,Stranger,Handgun,1,0,FBI
+604210,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Male,35,White,Unknown,Male,0,Unknown,Unknown,Unknown,Gun,0,1,FBI
+604211,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,October,2,Murder or Manslaughter,Yes,Male,16,Black,Unknown,Male,0,Native American/Alaska Native,Unknown,Stranger,Handgun,0,0,FBI
+604212,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,October,3,Murder or Manslaughter,No,Male,19,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604213,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,November,1,Murder or Manslaughter,Yes,Female,24,Black,Unknown,Male,22,Black,Unknown,Unknown,Gun,1,1,FBI
+604214,NC02601,Fayetteville,Municipal Police,Cumberland,North Carolina,2013,November,2,Murder or Manslaughter,Yes,Male,21,Asian/Pacific Islander,Unknown,Male,21,Asian/Pacific Islander,Unknown,Unknown,Unknown,0,0,FBI
+604215,NC02800,Dare County,Sheriff,Dare,North Carolina,2013,July,1,Murder or Manslaughter,No,Male,26,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Shotgun,0,0,FBI
+604216,NC02900,Davidson County,Sheriff,Davidson,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Female,52,White,Unknown,Male,0,White,Unknown,Unknown,Blunt Object,0,0,FBI
+604217,NC02901,Lexington,Municipal Police,Davidson,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,22,White,Unknown,Male,35,White,Unknown,Stranger,Knife,0,0,FBI
+604218,NC02901,Lexington,Municipal Police,Davidson,North Carolina,2013,June,1,Murder or Manslaughter,No,Male,56,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604219,NC02902,Thomasville,Municipal Police,Davidson,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,47,White,Unknown,Male,28,White,Unknown,Unknown,Knife,0,1,FBI
+604220,NC02902,Thomasville,Municipal Police,Davidson,North Carolina,2013,January,2,Murder or Manslaughter,Yes,Male,38,White,Unknown,Male,56,White,Unknown,Family,Rifle,0,0,FBI
+604221,NC03102,Beulaville,Municipal Police,Duplin,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,50,White,Unknown,Male,52,White,Unknown,Unknown,Handgun,0,0,FBI
+604222,NC03200,Durham County,Sheriff,Durham,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Male,99,White,Unknown,Male,37,White,Unknown,Unknown,Handgun,0,0,FBI
+604223,NC03200,Durham County,Sheriff,Durham,North Carolina,2013,December,2,Murder or Manslaughter,Yes,Male,99,White,Unknown,Male,65,White,Unknown,Friend,Fire,0,0,FBI
+604224,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,December,3,Murder or Manslaughter,Yes,Male,34,Black,Unknown,Male,28,Black,Unknown,Unknown,Gun,1,0,FBI
+604225,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,January,1,Murder or Manslaughter,No,Male,33,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604226,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,January,2,Murder or Manslaughter,No,Male,18,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604227,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,24,Black,Unknown,Male,18,Black,Unknown,Unknown,Handgun,0,2,FBI
+604228,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,March,1,Murder or Manslaughter,Yes,Male,29,Black,Unknown,Male,30,Black,Unknown,Unknown,Knife,0,0,FBI
+604229,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,April,1,Murder or Manslaughter,Yes,Male,19,Black,Unknown,Female,19,Black,Unknown,Unknown,Handgun,0,0,FBI
+604230,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,April,2,Murder or Manslaughter,No,Male,27,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604231,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,April,3,Murder or Manslaughter,No,Male,41,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604232,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,May,1,Murder or Manslaughter,No,Male,21,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604233,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,May,2,Murder or Manslaughter,Yes,Female,40,Black,Unknown,Male,45,Black,Unknown,Ex-Wife,Handgun,0,0,FBI
+604234,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,37,Black,Unknown,Male,0,Black,Unknown,Unknown,Handgun,0,1,FBI
+604235,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,June,2,Murder or Manslaughter,No,Male,25,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604236,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,June,3,Murder or Manslaughter,No,Male,32,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604237,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,June,4,Murder or Manslaughter,No,Male,19,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,3,FBI
+604238,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,49,Black,Unknown,Female,47,Black,Unknown,Boyfriend,Handgun,0,0,FBI
+604239,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,July,2,Murder or Manslaughter,Yes,Female,58,Black,Unknown,Male,34,Black,Unknown,Girlfriend,Unknown,0,0,FBI
+604240,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Female,49,Black,Unknown,Male,51,Black,Unknown,Unknown,Knife,0,0,FBI
+604241,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,September,1,Murder or Manslaughter,Yes,Male,26,Black,Unknown,Male,40,White,Unknown,Stranger,Rifle,0,1,FBI
+604242,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,October,1,Murder or Manslaughter,No,Male,47,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604243,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,November,1,Murder or Manslaughter,Yes,Male,19,Black,Unknown,Male,22,Black,Unknown,Acquaintance,Handgun,0,1,FBI
+604244,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,November,2,Murder or Manslaughter,Yes,Male,22,Black,Unknown,Male,21,Black,Unknown,Unknown,Gun,0,1,FBI
+604245,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,November,3,Murder or Manslaughter,Yes,Female,50,Black,Unknown,Male,51,Black,Unknown,Wife,Knife,0,0,FBI
+604246,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,November,4,Murder or Manslaughter,Yes,Male,20,Black,Unknown,Male,23,Black,Unknown,Unknown,Handgun,0,0,FBI
+604247,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Male,24,Black,Unknown,Male,22,Black,Unknown,Unknown,Handgun,0,0,FBI
+604248,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,December,2,Murder or Manslaughter,No,Male,27,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604249,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,December,3,Murder or Manslaughter,Yes,Female,33,White,Unknown,Male,28,Black,Unknown,Unknown,Gun,1,0,FBI
+604250,NC03201,Durham,Municipal Police,Durham,North Carolina,2013,December,4,Murder or Manslaughter,No,Male,28,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604251,NC03300,Edgecombe County,Sheriff,Edgecombe,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,34,Black,Unknown,Male,56,Black,Unknown,In-Law,Rifle,0,0,FBI
+604252,NC03300,Edgecombe County,Sheriff,Edgecombe,North Carolina,2013,June,2,Murder or Manslaughter,Yes,Male,29,Black,Unknown,Male,30,Black,Unknown,Acquaintance,Handgun,0,1,FBI
+604253,NC03300,Edgecombe County,Sheriff,Edgecombe,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Male,48,White,Unknown,Male,37,White,Unknown,Acquaintance,Knife,0,0,FBI
+604254,NC03301,Rocky Mount,Municipal Police,Nash,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Female,41,White,Unknown,Male,59,White,Unknown,Unknown,Handgun,0,0,FBI
+604255,NC03301,Rocky Mount,Municipal Police,Nash,North Carolina,2013,March,1,Murder or Manslaughter,Yes,Male,31,Black,Unknown,Male,40,Black,Unknown,Stranger,Gun,0,0,FBI
+604256,NC03301,Rocky Mount,Municipal Police,Nash,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,22,Black,Unknown,Male,0,Black,Unknown,Unknown,Gun,0,3,FBI
+604257,NC03301,Rocky Mount,Municipal Police,Nash,North Carolina,2013,September,1,Murder or Manslaughter,Yes,Female,49,Black,Unknown,Male,28,White,Unknown,Unknown,Blunt Object,0,0,FBI
+604258,NC03400,Forsyth County,Sheriff,Forsyth,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,41,White,Unknown,Male,42,White,Unknown,Acquaintance,Rifle,0,0,FBI
+604259,NC03400,Forsyth County,Sheriff,Forsyth,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,52,White,Unknown,Male,44,White,Unknown,Boyfriend/Girlfriend,Handgun,0,0,FBI
+604260,NC03400,Forsyth County,Sheriff,Forsyth,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,28,White,Unknown,Male,35,White,Unknown,Acquaintance,Unknown,0,0,FBI
+604261,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,February,1,Murder or Manslaughter,No,Male,24,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604262,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,17,Black,Unknown,Male,19,Black,Unknown,Unknown,Gun,0,3,FBI
+604263,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,July,1,Murder or Manslaughter,No,Female,28,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604264,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Male,40,Black,Unknown,Male,23,Black,Unknown,Unknown,Handgun,0,0,FBI
+604265,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,August,2,Murder or Manslaughter,No,Male,43,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604266,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,September,1,Murder or Manslaughter,Yes,Male,21,Black,Unknown,Male,23,Black,Unknown,Unknown,Handgun,0,2,FBI
+604267,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Female,43,White,Unknown,Male,22,Asian/Pacific Islander,Unknown,Acquaintance,Gun,0,2,FBI
+604268,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,October,2,Murder or Manslaughter,No,Male,39,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604269,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,November,1,Murder or Manslaughter,Yes,Female,76,Black,Unknown,Female,51,Black,Unknown,Unknown,Unknown,0,0,FBI
+604270,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,November,2,Murder or Manslaughter,Yes,Male,58,White,Unknown,Male,31,White,Unknown,Father,Handgun,0,0,FBI
+604271,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,November,3,Murder or Manslaughter,No,Male,46,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604272,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,November,4,Murder or Manslaughter,No,Male,28,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604273,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Male,26,White,Unknown,Male,27,White,Unknown,Unknown,Handgun,0,0,FBI
+604274,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,December,2,Murder or Manslaughter,No,Male,23,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604275,NC03402,Winston-Salem,Municipal Police,Forsyth,North Carolina,2013,December,3,Murder or Manslaughter,No,Male,28,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Rifle,0,0,FBI
+604276,NC03500,Franklin County,Sheriff,Franklin,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Female,16,Black,Unknown,Male,34,Black,Unknown,Wife,Unknown,1,1,FBI
+604277,NC03500,Franklin County,Sheriff,Franklin,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Male,53,White,Unknown,Female,54,White,Unknown,Husband,Shotgun,0,0,FBI
+604278,NC03500,Franklin County,Sheriff,Franklin,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Female,37,Black,Unknown,Male,34,Black,Unknown,Wife,Unknown,1,1,FBI
+604279,NC03605,Gaston County,County Police,Gaston,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Female,80,White,Not Hispanic,Male,88,White,Not Hispanic,Unknown,Gun,0,0,FBI
+604280,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Female,57,Black,Not Hispanic,Female,37,Black,Not Hispanic,Stepfather,Fire,1,0,FBI
+604281,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,24,Black,Not Hispanic,Male,18,White,Hispanic,Unknown,Handgun,1,0,FBI
+604282,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,78,Black,Not Hispanic,Female,37,Black,Not Hispanic,Stepfather,Fire,1,0,FBI
+604283,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,24,Black,Not Hispanic,Male,18,White,Hispanic,Unknown,Handgun,1,0,FBI
+604284,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Male,68,White,Not Hispanic,Male,33,White,Not Hispanic,Acquaintance,Knife,0,0,FBI
+604285,NC03606,Gastonia,Municipal Police,Gaston,North Carolina,2013,November,1,Murder or Manslaughter,Yes,Male,17,White,Not Hispanic,Male,19,Black,Not Hispanic,Acquaintance,Handgun,0,0,FBI
+604286,NC03609,Mount Holly,Municipal Police,Gaston,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,62,Asian/Pacific Islander,Unknown,Male,28,Asian/Pacific Islander,Unknown,Father,Handgun,0,0,FBI
+604287,NC03900,Granville County,Sheriff,Granville,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Male,57,White,Unknown,Male,38,White,Unknown,Acquaintance,Knife,0,0,FBI
+604288,NC03900,Granville County,Sheriff,Granville,North Carolina,2013,September,1,Murder or Manslaughter,No,Male,49,Unknown,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604289,NC03900,Granville County,Sheriff,Granville,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Male,61,White,Unknown,Male,41,White,Unknown,Family,Gun,0,0,FBI
+604290,NC03901,Oxford,Municipal Police,Granville,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Female,60,Black,Unknown,Male,42,Black,Unknown,Unknown,Unknown,0,0,FBI
+604291,NC04101,Gibsonville,Municipal Police,Guilford,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,61,White,Unknown,Female,30,Black,Unknown,Stranger,Handgun,0,0,FBI
+604292,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,April,2,Murder or Manslaughter,Yes,Female,38,Asian/Pacific Islander,Unknown,Male,45,White,Unknown,Wife,Handgun,1,0,FBI
+604293,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,December,3,Murder or Manslaughter,No,Male,46,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,1,0,FBI
+604294,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,14,Black,Unknown,Female,47,Black,Unknown,Unknown,Handgun,0,0,FBI
+604295,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Female,28,White,Unknown,Male,59,White,Unknown,Wife,Handgun,0,0,FBI
+604296,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,March,1,Murder or Manslaughter,Yes,Male,40,White,Unknown,Male,40,White,Unknown,Unknown,Handgun,0,0,FBI
+604297,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,March,2,Murder or Manslaughter,No,Male,18,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604298,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,March,3,Murder or Manslaughter,No,Male,29,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604299,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,March,4,Murder or Manslaughter,No,Male,99,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604300,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,April,1,Murder or Manslaughter,Yes,Male,45,Unknown,Unknown,Male,0,Black,Unknown,Stranger,Handgun,0,1,FBI
+604301,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,April,2,Murder or Manslaughter,Yes,Female,41,Asian/Pacific Islander,Unknown,Male,45,White,Unknown,Wife,Handgun,1,0,FBI
+604302,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,April,3,Murder or Manslaughter,Yes,Male,28,Black,Unknown,Male,31,Black,Unknown,Unknown,Handgun,0,2,FBI
+604303,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,April,4,Murder or Manslaughter,No,Male,30,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI
+604304,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,60,Black,Unknown,Male,23,Black,Unknown,Unknown,Unknown,0,0,FBI
+604305,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,May,2,Murder or Manslaughter,Yes,Male,53,Black,Unknown,Male,39,Black,Unknown,Unknown,Blunt Object,0,0,FBI
+604306,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,21,White,Unknown,Male,28,Black,Unknown,Unknown,Gun,0,1,FBI
+604307,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,July,2,Murder or Manslaughter,No,Male,34,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604308,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,July,3,Murder or Manslaughter,Yes,Female,38,White,Unknown,Male,45,White,Unknown,Unknown,Knife,0,0,FBI
+604309,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Female,62,Black,Unknown,Male,61,Black,Unknown,Unknown,Handgun,0,0,FBI
+604310,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,September,1,Murder or Manslaughter,Yes,Female,39,Black,Unknown,Male,33,Black,Unknown,Ex-Wife,Knife,0,0,FBI
+604311,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,October,1,Murder or Manslaughter,No,Female,72,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Knife,0,0,FBI
+604312,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,October,2,Murder or Manslaughter,No,Female,44,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604313,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,October,3,Murder or Manslaughter,No,Male,46,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604314,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,November,1,Murder or Manslaughter,No,Male,25,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604315,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,November,2,Murder or Manslaughter,No,Male,32,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,0,0,FBI
+604316,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,December,1,Murder or Manslaughter,Yes,Male,24,Black,Unknown,Male,30,Black,Unknown,Unknown,Knife,0,1,FBI
+604317,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,December,2,Murder or Manslaughter,No,Male,55,White,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,0,0,FBI
+604318,NC04102,Greensboro,Municipal Police,Guilford,North Carolina,2013,December,3,Murder or Manslaughter,No,Male,38,Unknown,Unknown,Unknown,0,Unknown,Unknown,Unknown,Unknown,1,0,FBI
+604319,NC04103,High Point,Municipal Police,Guilford,North Carolina,2013,January,1,Manslaughter by Negligence,Yes,Female,4,Black,Unknown,Male,26,Black,Unknown,Family,Unknown,0,0,FBI
+604320,NC04103,High Point,Municipal Police,Guilford,North Carolina,2013,February,1,Murder or Manslaughter,Yes,Female,23,Black,Unknown,Male,33,Black,Unknown,Wife,Blunt Object,0,0,FBI
+604321,NC04103,High Point,Municipal Police,Guilford,North Carolina,2013,November,1,Murder or Manslaughter,Yes,Male,16,Black,Unknown,Female,14,Black,Unknown,Brother,Knife,0,0,FBI
+604322,NC04200,Halifax County,Sheriff,Halifax,North Carolina,2013,October,1,Murder or Manslaughter,Yes,Male,20,Black,Unknown,Male,0,Black,Unknown,Unknown,Handgun,0,0,FBI
+604323,NC04200,Halifax County,Sheriff,Halifax,North Carolina,2013,October,2,Murder or Manslaughter,Yes,Male,29,Black,Unknown,Male,24,Black,Unknown,Unknown,Handgun,0,0,FBI
+604324,NC04202,Roanoke Rapids,Municipal Police,Halifax,North Carolina,2013,April,1,Murder or Manslaughter,Yes,Male,25,Black,Unknown,Male,44,Black,Unknown,Unknown,Handgun,0,1,FBI
+604325,NC04202,Roanoke Rapids,Municipal Police,Halifax,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,30,White,Unknown,Male,30,White,Unknown,Unknown,Blunt Object,0,1,FBI
+604326,NC04203,Scotland Neck,Municipal Police,Halifax,North Carolina,2013,April,1,Murder or Manslaughter,Yes,Female,31,Black,Unknown,Male,35,Black,Unknown,Wife,Handgun,0,0,FBI
+604327,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,December,1,Murder or Manslaughter,No,Male,23,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,1,0,FBI
+604328,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,April,1,Murder or Manslaughter,Yes,Male,48,Black,Unknown,Male,28,Black,Unknown,Unknown,Handgun,0,0,FBI
+604329,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,July,1,Murder or Manslaughter,Yes,Male,39,Black,Unknown,Female,32,Black,Unknown,Husband,Knife,0,0,FBI
+604330,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,August,1,Murder or Manslaughter,Yes,Male,31,White,Unknown,Male,29,Black,Unknown,Unknown,Rifle,0,1,FBI
+604331,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,September,1,Murder or Manslaughter,Yes,Male,33,Black,Unknown,Male,26,White,Unknown,Unknown,Blunt Object,0,0,FBI
+604332,NC04300,Harnett County,Sheriff,Harnett,North Carolina,2013,December,1,Murder or Manslaughter,No,Male,43,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Handgun,1,0,FBI
+604333,NC04400,Haywood County,Sheriff,Haywood,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,19,White,Unknown,Male,22,Black,Unknown,Acquaintance,Blunt Object,0,0,FBI
+604334,NC04500,Henderson County,Sheriff,Henderson,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Male,99,White,Unknown,Male,0,White,Unknown,Unknown,Rifle,2,0,FBI
+604335,NC04500,Henderson County,Sheriff,Henderson,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Female,99,White,Unknown,Male,0,White,Unknown,Unknown,Rifle,2,0,FBI
+604336,NC04500,Henderson County,Sheriff,Henderson,North Carolina,2013,January,1,Murder or Manslaughter,Yes,Male,71,White,Unknown,Male,44,White,Unknown,Father,Unknown,0,0,FBI
+604337,NC04500,Henderson County,Sheriff,Henderson,North Carolina,2013,May,1,Murder or Manslaughter,Yes,Female,99,White,Unknown,Male,0,White,Unknown,Unknown,Rifle,2,0,FBI
+604338,NC04602,Murfreesboro,Municipal Police,Hertford,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,44,White,Unknown,Male,20,Black,Unknown,Unknown,Blunt Object,1,0,FBI
+604339,NC04602,Murfreesboro,Municipal Police,Hertford,North Carolina,2013,June,1,Murder or Manslaughter,Yes,Male,46,White,Unknown,Male,20,Black,Unknown,Unknown,Blunt Object,1,0,FBI
+604340,NC04700,Hoke County,Sheriff,Hoke,North Carolina,2013,October,1,Murder or Manslaughter,No,Male,16,Black,Unknown,Unknown,0,Unknown,Unknown,Unknown,Gun,0,0,FBI

@@ -18,6 +18,15 @@ public class DatabaseLink{
     private PreparedStatement factStatement;
     private PreparedStatement placeStatement;
 
+
+    static final String sqlAgencyStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
+    static final String sqlPlaceStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimPlace,dimplace_pk) */ into DimPlace (city, state) VALUES (?,?)";
+    static final String sqlDateStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimDate,dimDate_pk) */ into DimDate (month, year) VALUES (?,?)";
+    static final String sqlProfileStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
+    static final String sqlFactStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(Fact,fact_pk) */ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
+
     public DatabaseLink() throws Exception{
         System.out.println("-------- Oracle JDBC Connection ------");
         
@@ -60,35 +69,37 @@ public class DatabaseLink{
         public void readFromCSV(String filename){
             BufferedReader br = null;
             String line;
-            String csvSeparator = ",";
+            String csvSeparator = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
             int number;
-            String sqlDateStatement, sqlPlaceStatement, sqlProfileStatement, sqlAgencyStatement, sqlFactStatement;
-
+            
 
             try {      
               
-                // SQL insert statement
-                sqlAgencyStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
-                sqlPlaceStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimPlace,dimplace_pk) */ into DimPlace (city, state) VALUES (?,?)";
-                sqlDateStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimDate,dimDate_pk) */ into DimDate (month, year) VALUES (?,?)";
-                sqlProfileStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
-                sqlFactStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(Fact,fact_pk) */ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                
+                int queryCpt = 1;
 
-
+                
                 // PreparedStatement creation
-                agencyStatement = connection.prepareStatement(sqlAgencyStatement);
-                profileStatement = connection.prepareStatement(sqlProfileStatement);
-                dateStatement = connection.prepareStatement(sqlDateStatement);
-                factStatement = connection.prepareStatement(sqlFactStatement);
-                placeStatement = connection.prepareStatement(sqlPlaceStatement);
 
+                instantiatePreparedStatement();
+
+           
                 br = new BufferedReader(new FileReader(filename));
                 line = br.readLine();  // ligne description csv
-                
+                String[] data;
 
                 // for each line in the csv file
                 while ((line = br.readLine()) != null) { 
-                    String[] data = line.split(csvSeparator);
+                    data = line.split(csvSeparator);
+
+                    queryCpt++;
+
+                    if(queryCpt%1500==0){                     
+                        executeBatchStatement();
+                        instantiatePreparedStatement();
+                    }
+
+
                     makeDimAgencyInsertStatement(data);    
                     makeDimPlaceInsertStatement(data);    
                     makeDimDateInsertStatement(data);
@@ -96,24 +107,11 @@ public class DatabaseLink{
                     makeFactInsertStatement(data);    
                 }
 
+
                 // Batch execution
-                agencyStatement.executeBatch();
-                agencyStatement.close();
-
-
-                placeStatement.executeBatch();
-                placeStatement.close();
-
-                dateStatement.executeBatch();
-                dateStatement.close();
-
-                profileStatement.executeBatch();
-                profileStatement.close();
-
-                factStatement.executeBatch();
-                factStatement.close();
-
-
+                executeBatchStatement();
+                
+               
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -286,6 +284,37 @@ public class DatabaseLink{
                 e.printStackTrace();
             }
           
+
+        }
+
+
+        private void instantiatePreparedStatement() throws SQLException{
+
+            // SQL insert statement
+            agencyStatement = connection.prepareStatement(sqlAgencyStatement);
+            profileStatement = connection.prepareStatement(sqlProfileStatement);
+            dateStatement = connection.prepareStatement(sqlDateStatement);
+            factStatement = connection.prepareStatement(sqlFactStatement);
+            placeStatement = connection.prepareStatement(sqlPlaceStatement);
+        }
+
+
+        private void executeBatchStatement() throws SQLException{
+            agencyStatement.executeBatch();
+            agencyStatement.close();
+
+
+            placeStatement.executeBatch();
+            placeStatement.close();
+
+            dateStatement.executeBatch();
+            dateStatement.close();
+
+            profileStatement.executeBatch();
+            profileStatement.close();
+
+            factStatement.executeBatch();
+            factStatement.close();
 
         }
 }
