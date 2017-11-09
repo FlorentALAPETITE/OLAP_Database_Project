@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class DatabaseLink{
@@ -19,11 +21,16 @@ public class DatabaseLink{
     private PreparedStatement placeStatement;
 
 
-    static final String sqlAgencyStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
-    static final String sqlPlaceStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimPlace,dimplace_pk) */ into DimPlace (city, state) VALUES (?,?)";
-    static final String sqlDateStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimDate,dimDate_pk) */ into DimDate (month, year) VALUES (?,?)";
-    static final String sqlProfileStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
-    static final String sqlFactStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(Fact,fact_pk) */ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    final String sqlAgencyStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
+    final String sqlPlaceStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimPlace,dimplace_pk) */ into DimPlace (city, state) VALUES (?,?)";
+    final String sqlDateStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimDate,dimDate_pk) */ into DimDate (month, year, season) VALUES (?,?,?)";
+    final String sqlProfileStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
+    final String sqlFactStatement = "INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX(Fact,fact_pk) */ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+    private ArrayList<String> winterMonths;
+    private ArrayList<String> summerMonths;
+    private ArrayList<String> springMonths;
+    private ArrayList<String> fallMonths;
 
 
 
@@ -60,9 +67,33 @@ public class DatabaseLink{
         
                 if (connection != null) {
                     System.out.println("Oracle connection available");
+
+                    winterMonths = new ArrayList<String>();
+                    summerMonths = new ArrayList<String>();
+                    springMonths = new ArrayList<String>();
+                    fallMonths = new ArrayList<String>();
+
+                    winterMonths.add("December");
+                    winterMonths.add("January");
+                    winterMonths.add("February");
+
+                    summerMonths.add("June");
+                    summerMonths.add("July");
+                    summerMonths.add("August");
+
+                    springMonths.add("March");
+                    springMonths.add("April");
+                    springMonths.add("May");
+
+                    fallMonths.add("September");
+                    fallMonths.add("October");
+                    fallMonths.add("November");
+
+
                 } else {
                     throw new Exception("Failed to make connection!");
                 }
+
         }
 
         // Read the csv data file
@@ -195,6 +226,21 @@ public class DatabaseLink{
                 dateStatement.setString(1,data[7]);
                 dateStatement.setInt(2,Integer.parseInt(data[6]));    
 
+
+                if(summerMonths.contains(data[7])){
+                    dateStatement.setString(3,"summer");
+                }
+                else if(winterMonths.contains(data[7])){
+                    dateStatement.setString(3,"winter");
+                }
+                else if(fallMonths.contains(data[7])){
+                    dateStatement.setString(3,"fall");
+                }
+                else if(springMonths.contains(data[7])){
+                    dateStatement.setString(3,"spring");
+                }
+
+
                 dateStatement.addBatch();               
             }
             catch(SQLIntegrityConstraintViolationException vc){
@@ -208,7 +254,7 @@ public class DatabaseLink{
         }
 
         private void makeDimProfileInsertStatement(String [] data){   
-             String sqlStatement;
+            String sqlStatement;
 
             // PreparedStatement : insert DimProfile victim
             try{

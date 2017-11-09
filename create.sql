@@ -21,6 +21,7 @@ CREATE TABLE DimAgency(
 CREATE TABLE DimDate(
 	month VARCHAR2(20) not null,
 	year NUMBER(4) not null,
+	season VARCHAR2(20),
 	CONSTRAINT dimDate_pk PRIMARY KEY (month,year)
 );
 
