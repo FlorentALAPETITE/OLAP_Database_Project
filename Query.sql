@@ -96,4 +96,16 @@ GROUP BY GROUPING SETS ((Fact.state, Fact.year, Fact.victimSex), (Fact.year,Fact
 PROMPT  -----------------;
 PROMPT ;
 
+-- GROUPING
+PROMPT Requete : GROUPING + GROUP BY ROLLUP pour récupérer le nb de victimes par mois et par state ;
+
+
+SELECT DimDate.month, DimPlace.state, sum(1+victimCount) as victims, GROUPING(DimDate.month) as yearB, GROUPING(DimPlace.state) as stateB
+FROM Fact, DimDate, DimPlace
+WHERE Fact.year = DimDate.year AND Fact.month = DimDate.month AND Fact.city = DimPlace.city AND Fact.state = DimPlace.state
+GROUP BY ROLLUP(DimDate.month,DimPlace.state);
+
+PROMPT  -----------------;
+PROMPT ;
+
 spool off;
