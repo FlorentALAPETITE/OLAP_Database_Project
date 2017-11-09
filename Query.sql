@@ -136,4 +136,16 @@ GROUP BY (DimDate.year,DimDate.season);
 PROMPT  -----------------;
 PROMPT ;
 
+-- NTILE
+PROMPT Requete : Le type des agences et le nombre de crimes résolus par celles-ci, ordonnés par quart via NTILE;
+
+
+SELECT agencyType, COUNT(crimeSolved) as nbCrimeSolved, NTILE(4) over(order by COUNT(crimeSolved) desc) as quarter
+FROM Fact, DimAgency
+WHERE Fact.agencyCode = DimAgency.agencyCode AND crimeSolved = 'Yes'
+GROUP BY agencyType;
+
+PROMPT  -----------------;
+PROMPT ;
+
 spool off;
