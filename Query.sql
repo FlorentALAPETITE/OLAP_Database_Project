@@ -100,10 +100,50 @@ PROMPT ;
 PROMPT Requete : GROUPING + GROUP BY ROLLUP pour récupérer le nb de victimes par mois et par state ;
 
 
-SELECT DimDate.month, DimPlace.state, sum(1+victimCount) as victims, GROUPING(DimDate.month) as yearB, GROUPING(DimPlace.state) as stateB
+SELECT DimDate.month, DimPlace.state, sum(1+victimCount) as victims, GROUPING(DimDate.month) as monthB, GROUPING(DimPlace.state) as stateB
 FROM Fact, DimDate, DimPlace
 WHERE Fact.year = DimDate.year AND Fact.month = DimDate.month AND Fact.city = DimPlace.city AND Fact.state = DimPlace.state
 GROUP BY ROLLUP(DimDate.month,DimPlace.state);
+
+PROMPT  -----------------;
+PROMPT ;
+
+-- RANK
+PROMPT Requete : RANK of victims by seasons;
+
+
+SELECT season, sum(1+victimCount) as victims,
+	RANK() OVER (ORDER BY sum(1+victimCount) DESC) as rank
+FROM Fact, DimDate
+WHERE Fact.year = DimDate.year AND Fact.month = DimDate.month
+GROUP BY season;
+
+PROMPT  -----------------;
+PROMPT ;
+
+
+
+-- RANK + PARTITION BY
+PROMPT Requete : RANK of victims by seasons, for each years using PARTITION BY;
+
+
+SELECT DimDate.year, DimDate.season, sum(1+victimCount) as victims,
+	RANK() OVER (PARTITION BY DimDate.year ORDER BY sum(1+victimCount) DESC) as rank
+FROM Fact, DimDate
+WHERE Fact.year = DimDate.year AND Fact.month = DimDate.month
+GROUP BY (DimDate.year,DimDate.season);
+
+PROMPT  -----------------;
+PROMPT ;
+
+-- NTILE
+PROMPT Requete : Le type des agences et le nombre de crimes résolus par celles-ci, ordonnés par quart via NTILE;
+
+
+SELECT agencyType, COUNT(crimeSolved) as nbCrimeSolved, NTILE(4) over(order by COUNT(crimeSolved) desc) as quarter
+FROM Fact, DimAgency
+WHERE Fact.agencyCode = DimAgency.agencyCode AND crimeSolved = 'Yes'
+GROUP BY agencyType;
 
 PROMPT  -----------------;
 PROMPT ;
