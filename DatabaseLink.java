@@ -21,11 +21,11 @@ public class DatabaseLink{
     private PreparedStatement placeStatement;
 
 
-    final String sqlAgencyStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimAgency,dimAgency_pk) */ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
-    final String sqlPlaceStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimPlace,dimPlace_pk) */ into DimPlace (city, state) VALUES (?,?)";
-    final String sqlDateStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimDate,dimDate_pk) */ into DimDate (month, year, season) VALUES (?,?,?)";
-    final String sqlProfileStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimProfile,dimProfile_pk) */ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
-    final String sqlFactStatement = "INSERT into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    final String sqlAgencyStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimAgency(agencyCode))*/ into DimAgency (agencyCode, agencyName, agencyType) VALUES (?,?,?)";
+    final String sqlPlaceStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimPlace,dimPlace_pk)*/ into DimPlace (city, state) VALUES (?,?)";
+    final String sqlDateStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimDate,dimDate_pk)*/ into DimDate (month, year, season) VALUES (?,?,?)";
+    final String sqlProfileStatement = "INSERT /*+ ignore_row_on_dupkey_index(DimProfile,dimProfile_pk)*/ into DimProfile (sex, age, race, ethnicity) VALUES (?,?,?,?)";
+    final String sqlFactStatement = "INSERT /*+ ignore_row_on_dupkey_index(Fact,fact_pk)*/ into Fact (idCrime, agencyCode, month, year, city, state, crimeType, crimeSolved, relationship, weapon, recordSource, victimCount, perpetratorCount, incident, victimSex, victimAge, victimRace, victimEthnicity, perpetratorSex, perpetratorAge, perpetratorRace, perpetratorEthnicity) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     private ArrayList<String> winterMonths;
     private ArrayList<String> summerMonths;

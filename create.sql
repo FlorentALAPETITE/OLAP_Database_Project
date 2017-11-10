@@ -65,4 +65,12 @@ CREATE TABLE Fact(
 	CONSTRAINT fact_pk PRIMARY KEY (idCrime)
 );
 
+
+GRANT ALL ON DimPlace TO admi10;
+GRANT ALL ON DimProfile TO admi10; 
+GRANT ALL ON DimDate TO admi10;
+GRANT ALL ON DimAgency TO admi10; 
+GRANT ALL ON Fact TO admi10;
+
+
 quit;
