@@ -66,11 +66,11 @@ CREATE TABLE Fact(
 );
 
 
-GRANT ALL ON DimPlace TO admi10;
-GRANT ALL ON DimProfile TO admi10; 
-GRANT ALL ON DimDate TO admi10;
-GRANT ALL ON DimAgency TO admi10; 
-GRANT ALL ON Fact TO admi10;
+GRANT ALL ON DimPlace TO admi45;
+GRANT ALL ON DimProfile TO admi45; 
+GRANT ALL ON DimDate TO admi45;
+GRANT ALL ON DimAgency TO admi45; 
+GRANT ALL ON Fact TO admi45;
 
 
 quit;
