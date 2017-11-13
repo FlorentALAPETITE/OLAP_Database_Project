@@ -1,7 +1,7 @@
 all:ExecuteDatabaseProject
 
 
-CompileDatabaseProject: CreateDatabase 
+CompileDatabaseProject: CreateDatabase CreateBin
 	javac -d bin src/*
 
 
@@ -11,3 +11,7 @@ ExecuteDatabaseProject: CompileDatabaseProject
 
 CreateDatabase:
 	sqlplus admi2@cienetdb/admi @create
+
+
+CreateBin:
+	mkdir -p bin
