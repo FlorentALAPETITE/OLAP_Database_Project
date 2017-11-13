@@ -1,3 +1,5 @@
 *.class
 csvTest.csv
 queryResult.txt
+CSVQueryResults/*
+bin/*

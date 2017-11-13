@@ -1,6 +1,7 @@
 set lines 175;
 set trimout on;
 set tab off;
+set feedback on
 spool queryResult.txt
 
 
@@ -26,10 +27,10 @@ PROMPT Requete : TOP 5 des villes avec le plus de meurtres sur toute la periode 
 
 
 SELECT * FROM (
-	SELECT SUM(victimCount+1) as nbVictimes, city, state, year
-	FROM admi2.Fact NATURAL JOIN admi2.DimDate NATURAL JOIN admi2.DimPlace	
-	GROUP BY year, city, state
-	ORDER BY sum(victimCount) DESC)
+	SELECT SUM(victimCount+1) as nbVictimes, city, state
+	FROM admi2.Fact NATURAL JOIN admi2.DimPlace		
+	GROUP BY city, state
+	ORDER BY nbVictimes DESC)
 WHERE ROWNUM<=5;
 
 
@@ -44,8 +45,8 @@ PROMPT Requete : GROUP BY CUBE sur les auteurs de crimes;
 
 
 SELECT perpetratorAge as age, perpetratorSex as sex, perpetratorRace as race, perpetratorEthnicity as ethnicity, SUM(victimCount+1) as nbVictimes
-FROM admi2.Fact, DimProfile
-WHERE perpetratorAge = DimProfile.age AND perpetratorSex = DimProfile.sex AND perpetratorRace = DimProfile.race AND perpetratorEthnicity = DimProfile.ethnicity
+FROM admi2.Fact, admi2.DimProfile
+WHERE perpetratorAge = admi2.DimProfile.age AND perpetratorSex = admi2.DimProfile.sex AND perpetratorRace = admi2.DimProfile.race AND perpetratorEthnicity = admi2.DimProfile.ethnicity
 GROUP BY CUBE (perpetratorAge, perpetratorSex, perpetratorRace, perpetratorEthnicity);
 
 
@@ -58,7 +59,7 @@ PROMPT ;
 PROMPT Requete : WINDOW sur le nombre de victimes par mois;
 
 
-SELECT year, month, sum(victimCount+1) as nbVictimes, sum(sum(victimCount+1)) over (order by month) as accumulationVictimes
+SELECT month,year, sum(victimCount+1) as nbVictimes, sum(sum(victimCount+1)) over (order by year,month) as accumulationVictimes
 FROM admi2.FACT natural join admi2.DimDate
 GROUP BY year,month;
 
@@ -89,8 +90,8 @@ PROMPT Requete : GROUPING SET par : (etat, annee, sexeVictime), (annee, sexeVict
 
 
 SELECT admi2.Fact.year, admi2.Fact.state, admi2.Fact.victimSex, SUM(victimCount+1) as victimes
-FROM admi2.Fact, DimProfile, admi2.DimDate
-WHERE admi2.Fact.year = admi2.DimDate.year and admi2.Fact.month = admi2.DimDate.month and victimAge = DimProfile.age AND victimSex = DimProfile.sex AND victimRace = DimProfile.race AND victimEthnicity = DimProfile.ethnicity
+FROM admi2.Fact, admi2.DimProfile, admi2.DimDate
+WHERE admi2.Fact.year = admi2.DimDate.year and admi2.Fact.month = admi2.DimDate.month and victimAge = admi2.DimProfile.age AND victimSex = admi2.DimProfile.sex AND victimRace = admi2.DimProfile.race AND victimEthnicity = admi2.DimProfile.ethnicity
 GROUP BY GROUPING SETS ((admi2.Fact.state, admi2.Fact.year, admi2.Fact.victimSex), (admi2.Fact.year,admi2.Fact.victimSex), (admi2.Fact.state, admi2.Fact.victimSex), (admi2.Fact.victimSex));
 
 PROMPT  -----------------;
@@ -155,3 +156,5 @@ PROMPT  -----------------;
 PROMPT ;
 
 spool off;
+
+quit;

@@ -1,11 +1,14 @@
 host mkdir -p CSVQueryResults
 
 set colsep ,
-set headsep off
+set tab on;
+set headsep on
 set pagesize 0
 set trimspool on
-set linesize 3
+set linesize 200
 set numwidth 5
+set feedback off; 
+set heading on
 
 spool CSVQueryResults/QueryResult1.csv
 
@@ -15,61 +18,37 @@ GROUP BY ROLLUP(year,month,state,city);
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 4
-set numwidth 5
 
 spool CSVQueryResults/QueryResult2.csv
 
 SELECT * FROM (
-	SELECT SUM(victimCount+1) as nbVictimes, city, state, year
-	FROM admi2.Fact NATURAL JOIN admi2.DimDate NATURAL JOIN admi2.DimPlace	
-	GROUP BY year, city, state
-	ORDER BY sum(victimCount) DESC)
+	SELECT city, state, SUM(victimCount+1) as nbVictimes
+	FROM admi2.Fact NATURAL JOIN admi2.DimPlace		
+	GROUP BY city, state
+	ORDER BY nbVictimes DESC)
 WHERE ROWNUM<=5;
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 5
-set numwidth 5
 
 spool CSVQueryResults/QueryResult3.csv
 
 SELECT perpetratorAge as age, perpetratorSex as sex, perpetratorRace as race, perpetratorEthnicity as ethnicity, SUM(victimCount+1) as nbVictimes
-FROM admi2.Fact, DimProfile
-WHERE perpetratorAge = DimProfile.age AND perpetratorSex = DimProfile.sex AND perpetratorRace = DimProfile.race AND perpetratorEthnicity = DimProfile.ethnicity
+FROM admi2.Fact, admi2.DimProfile
+WHERE perpetratorAge = admi2.DimProfile.age AND perpetratorSex = admi2.DimProfile.sex AND perpetratorRace = admi2.DimProfile.race AND perpetratorEthnicity = admi2.DimProfile.ethnicity
 GROUP BY CUBE (perpetratorAge, perpetratorSex, perpetratorRace, perpetratorEthnicity);
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 3
-set numwidth 5
 
 spool CSVQueryResults/QueryResult4.csv
 
-SELECT year, month, sum(victimCount+1) as nbVictimes, sum(sum(victimCount+1)) over (order by month) as accumulationVictimes
+SELECT month,year, sum(victimCount+1) as nbVictimes, sum(sum(victimCount+1)) over (order by year,month) as accumulationVictimes
 FROM admi2.FACT natural join admi2.DimDate
 GROUP BY year,month;
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 2
-set numwidth 5
 
 spool CSVQueryResults/QueryResult5.csv
 
@@ -80,28 +59,15 @@ ORDER BY victimes DESC;
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 4
-set numwidth 5
-
 spool CSVQueryResults/QueryResult6.csv
 
 SELECT admi2.Fact.year, admi2.Fact.state, admi2.Fact.victimSex, SUM(victimCount+1) as victimes
-FROM admi2.Fact, DimProfile, admi2.DimDate
-WHERE admi2.Fact.year = admi2.DimDate.year and admi2.Fact.month = admi2.DimDate.month and victimAge = DimProfile.age AND victimSex = DimProfile.sex AND victimRace = DimProfile.race AND victimEthnicity = DimProfile.ethnicity
+FROM admi2.Fact, admi2.DimProfile, admi2.DimDate
+WHERE admi2.Fact.year = admi2.DimDate.year and admi2.Fact.month = admi2.DimDate.month and victimAge = admi2.DimProfile.age AND victimSex = admi2.DimProfile.sex AND victimRace = admi2.DimProfile.race AND victimEthnicity = admi2.DimProfile.ethnicity
 GROUP BY GROUPING SETS ((admi2.Fact.state, admi2.Fact.year, admi2.Fact.victimSex), (admi2.Fact.year,admi2.Fact.victimSex), (admi2.Fact.state, admi2.Fact.victimSex), (admi2.Fact.victimSex));
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 4
-set numwidth 5
 
 spool CSVQueryResults/QueryResult7.csv
 
@@ -112,12 +78,6 @@ GROUP BY ROLLUP(admi2.DimDate.month,admi2.DimPlace.state);
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 2
-set numwidth 5
 
 spool CSVQueryResults/QueryResult8.csv
 
@@ -129,12 +89,6 @@ GROUP BY season;
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 3
-set numwidth 5
 
 spool CSVQueryResults/QueryResult9.csv
 
@@ -146,14 +100,8 @@ GROUP BY (admi2.DimDate.year,admi2.DimDate.season);
 
 spool off;
 
-set colsep ,
-set headsep off
-set pagesize 0
-set trimspool on
-set linesize 2
-set numwidth 5
 
-spool CSVQueryResults/QueryResult9.csv
+spool CSVQueryResults/QueryResult10.csv
 
 SELECT agencyType, COUNT(crimeSolved) as nbCrimeSolved, NTILE(4) over(order by COUNT(crimeSolved) desc) as quarter
 FROM admi2.Fact, admi2.DimAgency
@@ -162,3 +110,4 @@ GROUP BY agencyType;
 
 spool off;
 
+quit;

@@ -15,3 +15,11 @@ CreateDatabase:
 
 CreateBin:
 	mkdir -p bin
+
+
+ExecuteQueries:
+	sqlplus admi45@cienetdb/admi @Queries
+
+
+ExecuteCSVQueries:
+	sqlplus admi45@cienetdb/admi @QueryToCSV

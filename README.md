@@ -8,10 +8,10 @@ La commande **make** lance le script de création de l'entrepôt de données pui
 
 
 Pour executer les requêtes OLAP d'interrogation de l'entrepôt, dans un terminal :
-* sqlplus admi45@cienetdb/admi Queries
+* make ExecuteQueries
 * L'execution des requêtes fourni en sortie un fichier queryResult.txt.
 
 
 Pour executer les requêtes OLAP et avoir les résultats sous forme de fichier CSV, dans un terminal :
-* sqlplus admi45@cienetdb/admi QueryToCSV
-* L'execution fourni en sortie un dossier comprenant un fichier .csv par requête
+* make ExecuteCSVQueries
+* L'execution fourni en sortie un dossier comprenant un fichier .csv par requête exectuée.
