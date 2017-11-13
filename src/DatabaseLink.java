@@ -33,7 +33,7 @@ public class DatabaseLink{
     private ArrayList<String> fallMonths;
 
 
-
+    // Instanciate the connection with the JDBC Oracle driver
     public DatabaseLink() throws Exception{
         System.out.println("-------- Oracle JDBC Connection ------");
         
@@ -119,12 +119,15 @@ public class DatabaseLink{
                 line = br.readLine();  // ligne description csv
                 String[] data;
 
+                System.out.println("Insertion in progress.");
+
                 // for each line in the csv file
                 while ((line = br.readLine()) != null) { 
                     data = line.split(csvSeparator);
 
                     queryCpt++;
 
+                    // Batch execution each 500 queries
                     if(queryCpt%500==0){                     
                         executeBatchStatement();
                         instantiatePreparedStatement();
@@ -139,8 +142,10 @@ public class DatabaseLink{
                 }
 
 
-                // Batch execution
+                // Last batch execution
                 executeBatchStatement();
+
+                System.out.println("Insertion succesful.");
                 
                
 
@@ -218,8 +223,7 @@ public class DatabaseLink{
         }
 
         private void makeDimDateInsertStatement(String [] data){   
-             String sqlStatement;
-
+        
             // PreparedStatement : insert DimDate
             try{
                
@@ -253,8 +257,7 @@ public class DatabaseLink{
             
         }
 
-        private void makeDimProfileInsertStatement(String [] data){   
-            String sqlStatement;
+        private void makeDimProfileInsertStatement(String [] data){               
 
             // PreparedStatement : insert DimProfile victim
             try{
@@ -295,7 +298,7 @@ public class DatabaseLink{
         }
 
         private void makeFactInsertStatement(String [] data){   
-             String sqlStatement;
+
             // PreparedStatement : insert Fact
             try{
                 
@@ -334,9 +337,10 @@ public class DatabaseLink{
         }
 
 
+        // Instantiate the PreparedStatements
         private void instantiatePreparedStatement() throws SQLException{
 
-            // SQL insert statement
+            //
             agencyStatement = connection.prepareStatement(sqlAgencyStatement);
             profileStatement = connection.prepareStatement(sqlProfileStatement);
             dateStatement = connection.prepareStatement(sqlDateStatement);
@@ -345,6 +349,7 @@ public class DatabaseLink{
         }
 
 
+        // Execute batch for all PreparedStatement (each 500 rows)
         private void executeBatchStatement() throws SQLException{
             agencyStatement.executeBatch();
             agencyStatement.close();

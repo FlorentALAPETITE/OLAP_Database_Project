@@ -96,8 +96,10 @@ GROUP BY GROUPING SETS ((admi2.Fact.state, admi2.Fact.year, admi2.Fact.victimSex
 PROMPT  -----------------;
 PROMPT ;
 
+
+
 -- GROUPING
-PROMPT Requete : GROUPING + GROUP BY ROLLUP pour récupérer le nb de victimes par mois et par state ;
+PROMPT Requete : GROUPING + GROUP BY ROLLUP pour récupérer le nombre de victimes par mois et par états;
 
 
 SELECT admi2.DimDate.month, admi2.DimPlace.state, sum(1+victimCount) as victims, GROUPING(admi2.DimDate.month) as monthB, GROUPING(admi2.DimPlace.state) as stateB
@@ -107,6 +109,8 @@ GROUP BY ROLLUP(admi2.DimDate.month,admi2.DimPlace.state);
 
 PROMPT  -----------------;
 PROMPT ;
+
+
 
 -- RANK
 PROMPT Requete : RANK des victimes par saisons;
@@ -135,6 +139,8 @@ GROUP BY (admi2.DimDate.year,admi2.DimDate.season);
 
 PROMPT  -----------------;
 PROMPT ;
+
+
 
 -- NTILE
 PROMPT Requete : Le type des agences et le nombre de crimes résolus par celles-ci, ordonnés par quart via NTILE;

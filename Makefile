@@ -1,12 +1,12 @@
 all:ExecuteDatabaseProject
 
 
-CompileDatabaseProject: CreateDatabase  
-	javac DatabaseProject.java
+CompileDatabaseProject: CreateDatabase 
+	javac -d bin src/*
 
 
 ExecuteDatabaseProject: CompileDatabaseProject  
-	java -cp ojdbc8.jar:. DatabaseProject
+	java -cp "./bin:./ojdbc8.jar" DatabaseProject 
 
 
 CreateDatabase:
