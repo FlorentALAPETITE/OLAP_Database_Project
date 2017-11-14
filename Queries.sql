@@ -8,7 +8,7 @@ spool queryResult.txt
 
 
 -- ROLLUP sur les incident des années, mois, états, villes
-PROMPT Requete : GROUP BY ROLLUP sur les incident des annes, mois, etats, villes;
+PROMPT Requete 1 : GROUP BY ROLLUP sur les incident des annes, mois, etats, villes;
 
 
 SELECT city,state,month,year, count(*) as nbIncident
@@ -23,7 +23,7 @@ PROMPT ;
 
 
 -- TOP 5 des villes avec le plus de meurtres sur toute la période de temps
-PROMPT Requete : TOP 5 des villes avec le plus de meurtres sur toute la periode de temps;
+PROMPT Requete 2 : TOP 5 des villes avec le plus de meurtres sur toute la periode de temps;
 
 
 SELECT * FROM (
@@ -41,7 +41,7 @@ PROMPT ;
 
 
 -- CUBE sur les perpetrator 
-PROMPT Requete : GROUP BY CUBE sur les auteurs de crimes;
+PROMPT Requete 3 : GROUP BY CUBE sur les auteurs de crimes;
 
 
 SELECT perpetratorAge as age, perpetratorSex as sex, perpetratorRace as race, perpetratorEthnicity as ethnicity, SUM(victimCount+1) as nbVictimes
@@ -56,7 +56,7 @@ PROMPT ;
 
 
 -- WINDOW sur le nombre de victimes par mois
-PROMPT Requete : WINDOW sur le nombre de victimes par mois;
+PROMPT Requete 4 : WINDOW sur le nombre de victimes par mois;
 
 
 SELECT month,year, sum(victimCount+1) as nbVictimes, sum(sum(victimCount+1)) over (order by year,month) as accumulationVictimes
@@ -72,7 +72,7 @@ PROMPT ;
 
 
 -- Liste les armes recensées dans les incidents et le nombre d'implication de celles-ci
-PROMPT Requete : Liste les armes recensees dans les incidents et le nombre d implication de celles-ci;
+PROMPT Requete 5 : Liste les armes recensees dans les incidents et le nombre d implication de celles-ci;
 
 
 SELECT weapon, sum(1+victimCount) as victimes
@@ -86,7 +86,7 @@ PROMPT ;
 
 
 -- GROUPING SET 
-PROMPT Requete : GROUPING SET par : (etat, annee, sexeVictime), (annee, sexeVictime), (etat, sexeVictime), (sexeVictime);
+PROMPT Requete 6 : GROUPING SET par : (etat, annee, sexeVictime), (annee, sexeVictime), (etat, sexeVictime), (sexeVictime);
 
 
 SELECT admi2.Fact.year, admi2.Fact.state, admi2.Fact.victimSex, SUM(victimCount+1) as victimes
@@ -100,7 +100,7 @@ PROMPT ;
 
 
 -- GROUPING
-PROMPT Requete : GROUPING + GROUP BY ROLLUP pour récupérer le nombre de victimes par mois et par états;
+PROMPT Requete 7 : GROUPING + GROUP BY ROLLUP pour récupérer le nombre de victimes par mois et par états;
 
 
 SELECT admi2.DimDate.month, admi2.DimPlace.state, sum(1+victimCount) as victims, GROUPING(admi2.DimDate.month) as monthB, GROUPING(admi2.DimPlace.state) as stateB
@@ -114,7 +114,7 @@ PROMPT ;
 
 
 -- RANK
-PROMPT Requete : RANK des victimes par saisons;
+PROMPT Requete 8 : RANK des victimes par saisons;
 
 
 SELECT season, sum(1+victimCount) as victims,
@@ -129,7 +129,7 @@ PROMPT ;
 
 
 -- RANK + PARTITION BY
-PROMPT Requete : RANK des victimes par saisons, pour chaque annee avec PARTITION BY;
+PROMPT Requete 9 : RANK des victimes par saisons, pour chaque annee avec PARTITION BY;
 
 
 SELECT admi2.DimDate.year, admi2.DimDate.season, sum(1+victimCount) as victims,
@@ -144,7 +144,7 @@ PROMPT ;
 
 
 -- NTILE
-PROMPT Requete : Le type des agences et le nombre de crimes résolus par celles-ci, ordonnés par quart via NTILE;
+PROMPT Requete 10 : Le type des agences et le nombre de crimes résolus par celles-ci, ordonnés par quart via NTILE;
 
 
 SELECT agencyType, COUNT(crimeSolved) as nbCrimeSolved, NTILE(4) over(order by COUNT(crimeSolved) desc) as quarter
